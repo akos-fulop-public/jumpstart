@@ -13,7 +13,12 @@ Then run the app with
 
 ### Develop
 The recommended way to develop is to build the "builder" stage as an image:
-```docker image build --target builder jumpstart:builder .```
+```docker image build --target builder -t jumpstart:builder .```
+
+### Test
+The usual method to run the unittests is to manually invoke `ctest` in in the builder image.
+However tests can also be executed as a build stage:
+```docker image build --target test -t jumpstart:test .```
 
 ## Tools and Technologies
 
@@ -23,3 +28,4 @@ The list of tools and technologies directly used in the project.
 - Rocky Linux
 - Clang
 - CMake
+- Git

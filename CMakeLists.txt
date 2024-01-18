@@ -12,3 +12,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 
 add_subdirectory(src)
+option(BUILD_TESTS "Build unit tests" ON)
+if(BUILD_TESTS)
+	include(CTest)
+	add_subdirectory(test)
+endif()

@@ -8,7 +8,13 @@ ENTRYPOINT [ "/bin/bash" ]
 
 FROM builder AS build
 
-WORKDIR /src/build
+WORKDIR /build
 COPY . /src
-RUN cmake .. && cmake --build .
+RUN cmake /src && cmake --build .
 WORKDIR /src
+
+FROM rockylinux:9.3
+
+WORKDIR /app
+COPY --from=build /build/src/app /app/app
+ENTRYPOINT [ "/app/app" ]
